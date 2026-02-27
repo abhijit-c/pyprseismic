@@ -41,15 +41,14 @@ def phantom_gallery(
         "threephasessmooth": _threephasessmooth,
     }
     if name not in generators:
-        raise ValueError(
-            f"Unknown phantom '{name}'. Choose from: {list(generators)}"
-        )
+        raise ValueError(f"Unknown phantom '{name}'. Choose from: {list(generators)}")
     return generators[name](N, seed=seed, **kwargs)
 
 
 # ---------------------------------------------------------------------------
 # Tectonic phantom
 # ---------------------------------------------------------------------------
+
 
 def _tectonic(N: int, *, seed: int | None = None) -> NDArray[np.float64]:
     """Two tectonic plates with a subduction zone.
@@ -97,29 +96,32 @@ def _tectonic(N: int, *, seed: int | None = None) -> NDArray[np.float64]:
 # Shepp-Logan phantom
 # ---------------------------------------------------------------------------
 
+
 def _shepplogan(N: int, *, seed: int | None = None) -> NDArray[np.float64]:
     """Modified Shepp-Logan phantom.
 
     Ref: phantomgallery.m lines 155-214.
     """
     #         A      a      b     x0     y0    phi(deg)
-    ellipses = np.array([
-        [ 1.0,  0.69,   0.92,   0.0,    0.0,    0.0],
-        [-0.8,  0.6624, 0.8740, 0.0,   -0.0184, 0.0],
-        [-0.2,  0.1100, 0.3100, 0.22,   0.0,  -18.0],
-        [-0.2,  0.1600, 0.4100,-0.22,   0.0,   18.0],
-        [ 0.1,  0.2100, 0.2500, 0.0,    0.35,   0.0],
-        [ 0.1,  0.0460, 0.0460, 0.0,    0.1,    0.0],
-        [ 0.1,  0.0460, 0.0460, 0.0,   -0.1,    0.0],
-        [ 0.1,  0.0460, 0.0230,-0.08,  -0.605,  0.0],
-        [ 0.1,  0.0230, 0.0230, 0.0,   -0.606,  0.0],
-        [ 0.1,  0.0230, 0.0460, 0.06,  -0.605,  0.0],
-    ])
+    ellipses = np.array(
+        [
+            [1.0, 0.69, 0.92, 0.0, 0.0, 0.0],
+            [-0.8, 0.6624, 0.8740, 0.0, -0.0184, 0.0],
+            [-0.2, 0.1100, 0.3100, 0.22, 0.0, -18.0],
+            [-0.2, 0.1600, 0.4100, -0.22, 0.0, 18.0],
+            [0.1, 0.2100, 0.2500, 0.0, 0.35, 0.0],
+            [0.1, 0.0460, 0.0460, 0.0, 0.1, 0.0],
+            [0.1, 0.0460, 0.0460, 0.0, -0.1, 0.0],
+            [0.1, 0.0460, 0.0230, -0.08, -0.605, 0.0],
+            [0.1, 0.0230, 0.0230, 0.0, -0.606, 0.0],
+            [0.1, 0.0230, 0.0460, 0.06, -0.605, 0.0],
+        ]
+    )
 
     # Coordinate grid: xn = ((0:N-1) - (N-1)/2) / ((N-1)/2)
     xn = (np.arange(N) - (N - 1) / 2) / ((N - 1) / 2)
-    Xn = np.tile(xn, (N, 1))        # rows constant
-    Yn = np.rot90(Xn)               # columns constant
+    Xn = np.tile(xn, (N, 1))  # rows constant
+    Yn = np.rot90(Xn)  # columns constant
 
     X = np.zeros((N, N), dtype=np.float64)
 
@@ -149,6 +151,7 @@ def _shepplogan(N: int, *, seed: int | None = None) -> NDArray[np.float64]:
 # Smooth phantom
 # ---------------------------------------------------------------------------
 
+
 def _smooth(
     N: int,
     *,
@@ -164,18 +167,20 @@ def _smooth(
         np.arange(1, N + 1), np.arange(1, N + 1), indexing="ij"
     )
     sigma = 0.25 * N
-    c = np.array([
-        [0.6 * N, 0.6 * N],
-        [0.5 * N, 0.3 * N],
-        [0.2 * N, 0.7 * N],
-        [0.8 * N, 0.2 * N],
-    ])
+    c = np.array(
+        [
+            [0.6 * N, 0.6 * N],
+            [0.5 * N, 0.3 * N],
+            [0.2 * N, 0.7 * N],
+            [0.8 * N, 0.2 * N],
+        ]
+    )
     a = np.array([1.0, 0.5, 0.7, 0.9])
 
     im = np.zeros((N, N), dtype=np.float64)
     for k in range(p):
         im += a[k] * np.exp(
-            -(I_grid - c[k, 0]) ** 2 / (1.2 * sigma) ** 2
+            -((I_grid - c[k, 0]) ** 2) / (1.2 * sigma) ** 2
             - (J_grid - c[k, 1]) ** 2 / sigma**2
         )
     im /= im.max()
@@ -185,6 +190,7 @@ def _smooth(
 # ---------------------------------------------------------------------------
 # Grains (Voronoi) phantom
 # ---------------------------------------------------------------------------
+
 
 def _grains(
     N: int,
@@ -233,6 +239,7 @@ def _grains(
 # Ppower phantom
 # ---------------------------------------------------------------------------
 
+
 def _ppower(
     N: int,
     *,
@@ -253,10 +260,9 @@ def _ppower(
     I_grid, J_grid = np.meshgrid(
         np.arange(1, Nwork + 1), np.arange(1, Nwork + 1), indexing="ij"
     )
-    U = (
-        ((2 * I_grid - 1) / Nwork - 1) ** 2
-        + ((2 * J_grid - 1) / Nwork - 1) ** 2
-    ) ** (-smoothness / 2)
+    U = (((2 * I_grid - 1) / Nwork - 1) ** 2 + ((2 * J_grid - 1) / Nwork - 1) ** 2) ** (
+        -smoothness / 2
+    )
     F = U * np.exp(2 * np.pi * 1j * P)
     F = np.abs(np.fft.ifft2(F))
 
@@ -274,6 +280,7 @@ def _ppower(
 # ---------------------------------------------------------------------------
 # Three phases phantom
 # ---------------------------------------------------------------------------
+
 
 def _threephases(
     N: int,
@@ -298,7 +305,7 @@ def _threephases(
     im1 = np.zeros((N, N), dtype=np.float64)
     for k in range(p):
         im1 += np.exp(
-            -np.abs(I_grid - c1[k, 0]) ** 3 / (2.5 * sigma1) ** 3
+            -(np.abs(I_grid - c1[k, 0]) ** 3) / (2.5 * sigma1) ** 3
             - np.abs(J_grid - c1[k, 1]) ** 3 / sigma1**3
         )
     t1 = 0.35
@@ -311,7 +318,7 @@ def _threephases(
     im2 = np.zeros((N, N), dtype=np.float64)
     for k in range(p):
         im2 += np.exp(
-            -(I_grid - c2[k, 0]) ** 2 / (2 * sigma2) ** 2
+            -((I_grid - c2[k, 0]) ** 2) / (2 * sigma2) ** 2
             - (J_grid - c2[k, 1]) ** 2 / sigma2**2
         )
     t2 = 0.55
@@ -330,6 +337,7 @@ def _threephases(
 # ---------------------------------------------------------------------------
 # Three phases smooth phantom
 # ---------------------------------------------------------------------------
+
 
 def _threephasessmooth(
     N: int,
@@ -356,7 +364,7 @@ def _threephasessmooth(
     im1 = np.zeros((N, N), dtype=np.float64)
     for k in range(p):
         im1 += np.exp(
-            -np.abs(I_grid - c1[k, 0]) ** 3 / (2.5 * sigma1) ** 3
+            -(np.abs(I_grid - c1[k, 0]) ** 3) / (2.5 * sigma1) ** 3
             - np.abs(J_grid - c1[k, 1]) ** 3 / sigma1**3
         )
     t1 = 0.35
@@ -371,7 +379,7 @@ def _threephasessmooth(
     im2 = np.zeros((N, N), dtype=np.float64)
     for k in range(p):
         im2 += np.exp(
-            -(I_grid - c2[k, 0]) ** 2 / (2 * sigma2) ** 2
+            -((I_grid - c2[k, 0]) ** 2) / (2 * sigma2) ** 2
             - (J_grid - c2[k, 1]) ** 2 / sigma2**2
         )
     t2 = 0.55

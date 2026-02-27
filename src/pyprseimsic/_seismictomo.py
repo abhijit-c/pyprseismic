@@ -75,8 +75,7 @@ def _compute_ray_segments(
     # Pixel index (column-major, matching MATLAB's x(:) ordering).
     # MATLAB: col = floor(xm)*N + (N - floor(ym))  [1-indexed]
     # Python: col = floor(xm)*N + (N - 1 - floor(ym))  [0-indexed]
-    col = (np.floor(xm).astype(np.int64) * N
-           + (N - 1 - np.floor(ym).astype(np.int64)))
+    col = np.floor(xm).astype(np.int64) * N + (N - 1 - np.floor(ym).astype(np.int64))
 
     # Filter out any segments with zero length.
     nonzero = aval > 0

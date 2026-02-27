@@ -27,7 +27,7 @@ def _fresnel_kernel(
     delta_t = tSX + tRX - distSR
 
     S = np.cos(2 * np.pi * delta_t * omega_scaled) * np.exp(
-        -(alpha * delta_t * omega_scaled) ** 2
+        -((alpha * delta_t * omega_scaled) ** 2)
     )
 
     s_sum = S.sum()
@@ -130,9 +130,7 @@ def _build_sparse(
         source = (geom.x0[i], geom.y0[i])
         for j in range(p):
             receiver = (geom.xp[j], geom.yp[j])
-            result = _compute_kernel_entries(
-                source, receiver, omega_scaled, xx, yy, N
-            )
+            result = _compute_kernel_entries(source, receiver, omega_scaled, xx, yy, N)
             if result is not None:
                 aval, col = result
                 row_idx = i * p + j
@@ -164,9 +162,7 @@ def _build_linear_operator(
         source = (geom.x0[i], geom.y0[i])
         for j in range(p):
             receiver = (geom.xp[j], geom.yp[j])
-            result = _compute_kernel_entries(
-                source, receiver, omega_scaled, xx, yy, N
-            )
+            result = _compute_kernel_entries(source, receiver, omega_scaled, xx, yy, N)
             if result is not None:
                 kernel_data[i * p + j] = result
 

@@ -82,8 +82,13 @@ def test_problem_info():
 
 def test_all_phantoms():
     for name in [
-        "tectonic", "shepplogan", "smooth", "grains",
-        "ppower", "threephases", "threephasessmooth",
+        "tectonic",
+        "shepplogan",
+        "smooth",
+        "grains",
+        "ppower",
+        "threephases",
+        "threephasessmooth",
     ]:
         prob = prseismic(8, phantom=name, s=4, p=8, seed=42)
         assert prob.A.shape == (32, 64)

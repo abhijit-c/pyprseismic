@@ -51,13 +51,17 @@ def compute_geometry(N: int, s: int, p: int) -> SeismicGeometry:
     Np1 = (N / p1) / 2
     Np2 = (N / p2) / 2
 
-    xp = np.concatenate([
-        -N2 * np.ones(p2),
-        np.linspace(-N2 + Np1, N2 - Np1, p1),
-    ])
-    yp = np.concatenate([
-        np.linspace(-N2 + Np2, N2 - Np2, p2),
-        N2 * np.ones(p1),
-    ])
+    xp = np.concatenate(
+        [
+            -N2 * np.ones(p2),
+            np.linspace(-N2 + Np1, N2 - Np1, p1),
+        ]
+    )
+    yp = np.concatenate(
+        [
+            np.linspace(-N2 + Np2, N2 - Np2, p2),
+            N2 * np.ones(p1),
+        ]
+    )
 
     return SeismicGeometry(x0=x0, y0=y0, xp=xp, yp=yp, N=N, s=s, p=p)
