@@ -76,8 +76,6 @@ def test_b_equals_Ax_linop():
 def test_problem_info():
     prob = prseismic(8, s=4, p=16)
     assert prob.info.problem_type == "tomography"
-    assert prob.info.x_type == "image2D"
-    assert prob.info.b_type == "image2D"
     assert prob.info.x_size == (8, 8)
     assert prob.info.b_size == (16, 4)
 

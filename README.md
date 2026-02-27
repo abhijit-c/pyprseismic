@@ -130,8 +130,6 @@ class SeismicProblem:    # frozen dataclass
 
 class ProblemInfo:        # frozen dataclass
     problem_type: str     # "tomography"
-    x_type: str           # "image2D"
-    b_type: str           # "image2D"
     x_size: tuple[int, int]
     b_size: tuple[int, int]
 

@@ -17,7 +17,7 @@ def test_phantom_type_values():
 
 
 def test_problem_info_frozen():
-    info = ProblemInfo("tomography", "image2D", "image2D", (8, 8), (16, 8))
+    info = ProblemInfo("tomography", (8, 8), (16, 8))
     assert info.x_size == (8, 8)
     assert info.b_size == (16, 8)
 
@@ -26,7 +26,7 @@ def test_seismic_problem():
     A = csr_matrix((4, 9))
     b = np.zeros(4)
     x = np.zeros(9)
-    info = ProblemInfo("tomography", "image2D", "image2D", (3, 3), (4, 1))
+    info = ProblemInfo("tomography", (3, 3), (4, 1))
     prob = SeismicProblem(A=A, b=b, x=x, info=info)
     assert prob.A.shape == (4, 9)
     assert prob.b.shape == (4,)

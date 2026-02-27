@@ -95,8 +95,6 @@ def prseismic(
 
     info = ProblemInfo(
         problem_type="tomography",
-        x_type="image2D",
-        b_type="image2D",
         x_size=(N, N),
         b_size=(p, s),
     )

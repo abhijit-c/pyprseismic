@@ -27,8 +27,6 @@ class PhantomType(Enum):
 @dataclass(frozen=True)
 class ProblemInfo:
     problem_type: str
-    x_type: str
-    b_type: str
     x_size: tuple[int, int]
     b_size: tuple[int, int]
 
