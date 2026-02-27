@@ -28,6 +28,7 @@ def test_receiver_split():
     np.testing.assert_allclose(geom.xp[:p2], -N / 2)
     # Last p1 receivers on top boundary.
     np.testing.assert_allclose(geom.yp[p2:], N / 2)
+    assert len(geom.yp[p2:]) == p1
 
 
 def test_geometry_default_N():

@@ -1,8 +1,6 @@
 from __future__ import annotations
 
 import numpy as np
-import pytest
-from scipy.sparse import issparse
 
 from pyprseimsic import seismicwavetomo
 
