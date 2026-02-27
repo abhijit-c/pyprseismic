@@ -25,4 +25,5 @@ dev = [
 ]
 examples = [
     "jupyterlab>=4.5.5",
+    "matplotlib>=3.10.8",
 ]

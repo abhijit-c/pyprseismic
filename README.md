@@ -166,6 +166,17 @@ im = phantom_gallery("ppower", 128, seed=7, rel_nonzero=0.5, smoothness=3.0)
 A = seismictomo(64, s=32, p=64)
 ```
 
+## Notebooks
+
+Rendered demo notebooks are available in [`notebooks/`](notebooks):
+
+- [`00_overview_prseismic.ipynb`](notebooks/00_overview_prseismic.ipynb) --
+  end-to-end `prseismic` usage, `x`/`b` visualization, and basic sanity checks.
+- [`01_phantom_gallery.ipynb`](notebooks/01_phantom_gallery.ipynb) -- gallery
+  of all built-in phantoms plus key parameter sweeps.
+- [`02_forward_models_ray_vs_fresnel.ipynb`](notebooks/02_forward_models_ray_vs_fresnel.ipynb)
+  -- geometry and matrix diagnostics for ray and Fresnel forward models.
+
 ## Tests
 
 ```bash
