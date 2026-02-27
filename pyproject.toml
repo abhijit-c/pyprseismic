@@ -1,0 +1,29 @@
+[project]
+name = "pyprseimsic"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "abhijit-c", email = "abhijit9331@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "numpy>=2.4.2",
+    "scipy>=1.17.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.8,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ipython>=9.10.0",
+    "pytest>=9.0.2",
+    "pytest-xdist>=3.8.0",
+    "ruff>=0.15.4",
+    "ty>=0.0.19",
+]
+examples = [
+    "jupyterlab>=4.5.5",
+]
