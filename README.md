@@ -1,16 +1,27 @@
 # PyPRSeismic
 
-A Python port of the MATLAB [IRTools](https://github.com/jnagy1/IRtools) `PRseismic` function for generating 2D seismic travel-time tomography test problems.
+A Python port of the MATLAB [IRTools](https://github.com/jnagy1/IRtools)
+`PRseismic` function for generating 2D seismic travel-time tomography test
+problems.
 
-Given an N-by-N pixel domain, `pyprseimsic` builds a system matrix **A** relating pixel slowness values to measured travel times, along with a phantom image **x** and synthetic measurements **b = Ax**. Two forward models are supported: straight-ray tracing and Fresnel-zone sensitivity kernels.
+Given an N-by-N pixel domain, `pyprseimsic` builds a system matrix **A**
+relating pixel slowness values to measured travel times, along with a phantom
+image **x** and synthetic measurements **b = Ax**. Two forward models are
+supported: straight-ray tracing and Fresnel-zone sensitivity kernels.
 
 ## Installation
 
-Requires Python >= 3.13, numpy, and scipy.
+Requires Python >= 3.13, numpy, and scipy. This package is not uploaded to
+PyPI, but can nevertheless be installed via the usual suspects:
 
 ```bash
-uv sync
+uv add "pyprseismic @ git+https://github.com/abhijit-c/pyprseismic"
 ```
+or
+```bash
+pip install git+https://github.com/abhijit-c/pyprseismic
+```
+
 
 ## Quick start
 
