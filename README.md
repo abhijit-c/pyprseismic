@@ -178,7 +178,3 @@ This codebase was written with the assistance of Claude (Anthropic). Claude was
 used to port the MATLAB reference implementations to Python, write unit tests,
 and draft this README. All generated code was reviewed and validated by the
 repository owner.
-
-## License
-
-See LICENSE for details.
