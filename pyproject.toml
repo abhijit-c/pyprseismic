@@ -20,7 +20,6 @@ build-backend = "uv_build"
 dev = [
     "ipython>=9.10.0",
     "pytest>=9.0.2",
-    "pytest-xdist>=3.8.0",
     "ruff>=0.15.4",
     "ty>=0.0.19",
 ]
