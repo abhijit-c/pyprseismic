@@ -1,6 +1,6 @@
 # Notebooks
 
-This folder contains runnable, rendered demos for `pyprseimsic`.
+This folder contains runnable, rendered demos for `pyprseismic`.
 
 ## Contents
 

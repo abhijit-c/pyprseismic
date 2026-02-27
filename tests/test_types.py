@@ -3,7 +3,7 @@ from __future__ import annotations
 import numpy as np
 from scipy.sparse import csr_matrix
 
-from pyprseimsic import PhantomType, ProblemInfo, SeismicProblem, WaveModel
+from pyprseismic import PhantomType, ProblemInfo, SeismicProblem, WaveModel
 
 
 def test_wave_model_values():

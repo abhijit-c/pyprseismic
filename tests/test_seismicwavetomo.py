@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from pyprseimsic import seismicwavetomo
+from pyprseismic import seismicwavetomo
 
 
 def test_sparse_shape():

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from pyprseimsic._geometry import compute_geometry
+from pyprseismic._geometry import compute_geometry
 
 
 def test_source_positions():

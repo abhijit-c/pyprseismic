@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 from scipy.sparse import issparse
 
-from pyprseimsic import PhantomType, SeismicProblem, WaveModel, prseismic
+from pyprseismic import PhantomType, SeismicProblem, WaveModel, prseismic
 
 
 def test_default_call():

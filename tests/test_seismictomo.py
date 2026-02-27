@@ -3,7 +3,7 @@ from __future__ import annotations
 import numpy as np
 from scipy.sparse import issparse
 
-from pyprseimsic import seismictomo
+from pyprseismic import seismictomo
 
 
 def test_sparse_shape():

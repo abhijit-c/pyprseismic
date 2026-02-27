@@ -3,7 +3,7 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from pyprseimsic import phantom_gallery
+from pyprseismic import phantom_gallery
 
 
 PHANTOM_NAMES = [

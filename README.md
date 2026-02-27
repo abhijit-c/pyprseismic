@@ -4,7 +4,7 @@ A Python port of the MATLAB [IRTools](https://github.com/jnagy1/IRtools)
 `PRseismic` function for generating 2D seismic travel-time tomography test
 problems.
 
-Given an N-by-N pixel domain, `pyprseimsic` builds a system matrix **A**
+Given an N-by-N pixel domain, `pyprseismic` builds a system matrix **A**
 relating pixel slowness values to measured travel times, along with a phantom
 image **x** and synthetic measurements **b = Ax**. Two forward models are
 supported: straight-ray tracing and Fresnel-zone sensitivity kernels.
@@ -26,7 +26,7 @@ pip install git+https://github.com/abhijit-c/pyprseismic
 ## Quick start
 
 ```python
-from pyprseimsic import prseismic
+from pyprseismic import prseismic
 
 # Default: 256x256 tectonic phantom, ray model
 prob = prseismic()
@@ -140,13 +140,13 @@ class PhantomType(Enum): # TECTONIC, SHEPPLOGAN, SMOOTH, GRAINS, PPOWER, ...
 ## Examples
 
 ```python
-from pyprseimsic import prseismic, phantom_gallery, seismictomo
+from pyprseismic import prseismic, phantom_gallery, seismictomo
 
 # Use a specific phantom with the ray model
 prob = prseismic(128, phantom="shepplogan", s=64, p=128)
 
 # Use enums instead of strings
-from pyprseimsic import WaveModel, PhantomType
+from pyprseismic import WaveModel, PhantomType
 prob = prseismic(64, phantom=PhantomType.GRAINS, wave_model=WaveModel.FRESNEL, seed=42)
 
 # Supply a custom phantom image
